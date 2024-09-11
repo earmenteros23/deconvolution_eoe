@@ -1,0 +1,9 @@
+name: deconvolution
+channels:
+  - conda-forge
+  - base
+  - R
+
+dependencies:
+ - r-base=4.4.1
+ - r-tidyverse=2.0.0 
