@@ -3,7 +3,10 @@ channels:
   - conda-forge
   - base
   - R
+  - bioconda
 
 dependencies:
  - r-base=4.4.1
- - r-tidyverse=2.0.0 
+ - wget=1.21.4 
+ - r-tidyverse=2.0.0
+ - snakemake=8.20.3
