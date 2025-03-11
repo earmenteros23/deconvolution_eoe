@@ -52,3 +52,7 @@ rsconnect/
 
 #Snakemake
 .snakemake
+
+#Ignore scRNAseq GEO data
+data/GSE*
+
