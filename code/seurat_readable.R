@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
 
 # Load required libraries
-library(optparse)  # For parsing command-line arguments
-library(stringr)   # For string manipulation
+library(optparse)
+library(stringr)  
 
 # Define command-line options
 option_list = list(
@@ -90,6 +90,4 @@ main <- function() {
 
 # Execute the main function
 main()
-
-
 
