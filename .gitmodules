@@ -1,0 +1,3 @@
+[submodule "shared_resources"]
+	path = shared_resources
+	url = https://github.com/earmenteros23/shared_resources.git
