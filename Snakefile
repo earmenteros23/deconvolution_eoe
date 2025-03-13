@@ -1,4 +1,4 @@
-rule modified_files:
+rule inter_files:
     input:
         "data/GSE201153.tar",
         "data/GSE201153/",
@@ -8,12 +8,13 @@ rule modified_files:
         "data/.GSE201153.tar_removed",
         "data/.GSE175930_removed",
         "data/.GSE175930.tar_removed",
-        "data/.runs_renamed_completed"
+        "data/.metadata_completed",
+        "visuals/renamed_dirs_tree.txt"
 
 rule final_files:
     input:
-        "data/GSE201153_organized_rothenberg/",
-        "data/GSE175930_organized_morgan/"
+      "data/.runs_renamed_completed",
+
 
 
 
@@ -103,17 +104,40 @@ rule remove_GSE175930:
       touch {output.tar}
       """
 
+rule morgan_metadata:
+  input:
+    meta=protected("data/metadata_morgan/tissue_object_metadata.csv")
+  output:
+      "data/.metadata_completed"  # Archivo ficticio para representar la finalización
+  shell:
+      """
+      touch {output}
+      """
+
 rule rename_runs:
+  input:
+    script= "code/rename_runs.R",
+    direct_rothenberg=directory("data/GSE201153_organized_rothenberg/"),
+    direct_morgan=directory("data/GSE175930_organized_morgan/"),
+    meta= "data/.metadata_completed"
+  output:
+    "data/.runs_renamed_completed"
+  shell:
+    """
+    Rscript {input.script}
+    touch {output}  # Create the completion file
+    """
+
+rule tree_rename_dirs:
     input:
-        script= "code/rename_runs.R",
-        direct_rothenberg=directory("data/GSE201153_organized_rothenberg/"),
-        direct_morgan=directory("data/GSE175930_organized_morgan/"),
-        meta="data/metadata_morgan/tissue_object_metadata.csv"
+        script= "code/renamed_dirs_tree.bash",
+        renamed="data/.runs_renamed_completed"
+        
     output:
-         "data/.runs_renamed_completed"
+         "visuals/renamed_dirs_tree.txt"
     shell:
       """
-      Rscript {input.script}
-      touch {output}  # Create the completion file
+      {input.script}
       """
+      
 
