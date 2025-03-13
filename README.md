@@ -1,10 +1,15 @@
 # README
 
-This is a repository to make a reproducible project combining publicly available scRNAseq datasets with our/other's bulk RNAseq data about eosinophilic esophagitis
+This is a repository to make a reproducible project combining publicly available scRNAseq datasets 
+with our/other's bulk RNAseq data about eosinophilic esophagitis
 
 # Automated Pipeline
 
-This automated pipeline downloads the scRNAseq datasets **GSE201153** and **GSE175930** from the **GEO repository** as tar files, uncompresses them, and establishes the directory format compatible with the Seurat `Read10X` function. Additionally, it renames and selects runs of interest for the purpose of the downstream study.
+Snakemake automates the pipeline downloading the scRNAseq datasets **GSE201153** and **GSE175930** from the **GEO repository** 
+as tar files, uncompressing them, and establishing the directory format compatible with the Seurat `Read10X` function.
+For output from CellRanger >= 3.0 the directory should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz. 
+And the run will be named after the directory name. Additionally, it renames and selects runs of interest for
+the purpose of the downstream study. 
 
 ## Pipeline Overview
 
