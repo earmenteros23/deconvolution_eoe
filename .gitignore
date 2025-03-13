@@ -57,3 +57,6 @@ rsconnect/
 #Ignore scRNAseq GEO data
 data/GSE*
 
+
+#Ignore README.html
+README.html
